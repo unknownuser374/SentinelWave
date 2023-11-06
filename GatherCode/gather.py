@@ -8,6 +8,7 @@ import signal
 # Change these to your proper folders!
 HYUNDAI = './../Data/Hyundai'
 GENERIC = './../Data/GenericFsk'
+TOYOTALC= './../Data/ToyotaLc'
 LOCK = '/Lock/'
 UNLOCK = '/Unlock/'
 
@@ -36,17 +37,16 @@ def record_signal(output, samp_rate, freq, dur, prefix):
 
 if __name__ == '__main__':
     # Configure your parameters
-    output = GENERIC+LOCK  # Folder to save the recorded signals
-    samp_rate = 2e6  # Sample rate (2Msps in this example)
-    freq = 433.92e6  # Center frequency (433.92 MHz in this example for subaru and hyundai 4Runner I think was 315Mhz)
-    dur = 4  # Recording duration in seconds
+    output = TOYOTALC+LOCK  # Folder to save the recorded signals
+    samp_rate = 10e6  # Sample rate (2Msps in this example)
+    freq = 314.92e6  # Center frequency (433.92 MHz in this example for subaru and hyundai 4Runner I think was 315Mhz)
+    dur = 5  # Recording duration in seconds
     prefix = "keyfob_signal"  # Prefix for output file names
 
     try:
         while True:
             record_signal(output, samp_rate, freq, dur, prefix)
-            print(f"Recording completed {output}, f:{freq}, s:{samp_rate}.
-                  \nWaiting for the next capture in 2 seconds...")
+            print(f"Recording completed {output}, f:{freq}, s:{samp_rate}.\nWaiting for the next capture in 2 seconds...")
             time.sleep(2)  # Wait for X seconds before the next capture
     except KeyboardInterrupt:
         print("Exiting...")
