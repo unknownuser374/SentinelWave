@@ -5,6 +5,7 @@ import argparse
 
 # Setting up some constants
 # Change these to your proper folders!
+GENERIC = './../Data/GenericFsk'
 HYUNDAI = './../Data/Hyundai'
 TOYOTALC= './../Data/ToyotaLc'
 GENERATE = '/None'  # Changed this to '/None' to create a 'None' directory
@@ -42,11 +43,11 @@ def generate_square_wave_signal(frequency, duration, sampling_rate, amplitude, o
 
 def main(iter, noise_amplitude):
     # Set the parameters
-    frequency = 314.92e6  # Frequency of the square wave (in Hz)
-    duration = 5   # Duration of the signal (in seconds)
-    sampling_rate = 10e6  # Sampling rate (in samples per second)
+    frequency = 433.9e6  # Frequency of the square wave (in Hz)
+    duration = 4   # Duration of the signal (in seconds)
+    sampling_rate = 8e6  # Sampling rate (in samples per second)
     amplitude = 1  # Amplitude of the square wave
-    output_directory = TOYOTALC + GENERATE  # Output directory
+    output_directory = GENERIC + GENERATE  # Output directory
 
     for _ in range(iter):
         raw_fname = generate_square_wave_signal(frequency, duration, sampling_rate, amplitude, output_directory, noise_amplitude)
